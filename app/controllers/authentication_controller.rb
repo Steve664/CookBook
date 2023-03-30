@@ -13,7 +13,11 @@ class AuthenticationController < ApplicationController
         render json: { error: 'unauthorized' }, status: :unauthorized
       end
     end
-  
+
+    def verify_token
+        render json: { success: true }
+      end
+      
     private
   
     def login_params

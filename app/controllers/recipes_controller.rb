@@ -1,10 +1,10 @@
 class RecipesController < ApplicationController
-    before_action :authorize_request, only: [:show, :edit, :update, :destroy]
+    before_action :authorize_request, only: [:create, :edit, :update, :destroy]
     before_action :set_recipe, only: [:show, :edit, :update, :destroy]
   
     def index
       @recipes = Recipe.all
-      render json: @recipes
+      render json: @recipes, include: :allergens
     end
   
     def show
@@ -41,6 +41,6 @@ class RecipesController < ApplicationController
     end
   
     def recipe_params
-      params.require(:recipe).permit(:title, :description, :instructions, :user_id, allergen_ids: [])
+      params.require(:recipe).permit(:title, :image, :description, :instructions, :user_id, allergen_ids: [])
     end
   end
