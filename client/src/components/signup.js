@@ -4,6 +4,8 @@ import { Button, Form, Grid, Header, Image, Message, Segment, Icon } from 'seman
 
 function SignUp() {
 
+
+
     let condition = true
     return (
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
@@ -11,7 +13,7 @@ function SignUp() {
                 <Header as='h2' color='teal' textAlign='center'>
                     <Image src='../logo.svg' /> Sign up for an account
                 </Header>
-                <Form size='large'>
+                <Form size='large' onSubmit={handleSubmit}>
                     <Segment stacked>
                         <Form.Input fluid icon='user' required iconPosition='left' type="email" placeholder='E-mail address' />
                         <Form.Input fluid icon='user' required iconPosition='left' type="name" placeholder='name' />
