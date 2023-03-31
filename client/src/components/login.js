@@ -13,7 +13,7 @@ function Login() {
     }
 
     const handleLogin = async () => {
-        // make API call to authenticate user
+
         const response = await fetch('http://localhost:3000/auth/login', {
             method: 'POST',
             body: JSON.stringify(inputs),
@@ -23,7 +23,7 @@ function Login() {
         });
         const data = await response.json();
         console.log(data)
-        // set session cookie
+
         Cookies.set('token', data.token);
 
         navigate('/dashboard');
@@ -32,8 +32,8 @@ function Login() {
     return (
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>
-                <Header as='h2' color='teal' textAlign='center'>
-                    <Image src='../logo.svg' /> Log-in to your account
+                <Header as='h2' color='black' textAlign='center'>
+                    <Image src='https://cdn.dribbble.com/users/2425253/screenshots/15276005/media/96f7e2bd3cc1089bcbf0eb26d74b4a08.jpg?compress=1&resize=1000x750&vertical=top' /> Log-in to your account
                 </Header>
                 <Form size='large' onSubmit={handleLogin}>
                     <Segment stacked>
@@ -50,7 +50,7 @@ function Login() {
                             type='password'
                         />
 
-                        <Button color='teal' fluid size='large'>
+                        <Button color='yellow' fluid size='large'>
                             Login
                         </Button>
                     </Segment>

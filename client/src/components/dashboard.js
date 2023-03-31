@@ -21,6 +21,7 @@ function Dashboard() {
                 .then(data => setUser(data.user))
                 .catch(error => console.log(error));
         }
+        //if not valid redirect
         // else {}
     }, []);
 
