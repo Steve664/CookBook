@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
   
-
+get '/auth/verify_token', to: 'authentication#verify_token'
   post '/auth/login', to: 'authentication#login'
   get '/*a', to: 'application#not_found'
 

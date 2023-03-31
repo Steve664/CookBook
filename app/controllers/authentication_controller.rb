@@ -15,9 +15,9 @@ class AuthenticationController < ApplicationController
     end
 
     def verify_token
-        render json: { success: true }
-      end
-      
+        render json: { success: true, user: @current_user }
+    end
+
     private
   
     def login_params
