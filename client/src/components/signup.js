@@ -1,10 +1,28 @@
-import React from 'react'
-
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { Button, Form, Grid, Header, Image, Message, Segment, Icon } from 'semantic-ui-react'
 
 function SignUp() {
+    const [inputs, setInputs] = useState({});
+    const navigate = useNavigate()
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({ ...values, [name]: value }))
+    }
+    const handleSubmit = async () => {
 
-
+        const response = await fetch('/users', {
+            method: 'POST',
+            body: JSON.stringify(inputs),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        console.log(data)
+        navigate('/');
+    }
 
     let condition = true
     return (
@@ -15,12 +33,22 @@ function SignUp() {
                 </Header>
                 <Form size='large' onSubmit={handleSubmit}>
                     <Segment stacked>
-                        <Form.Input fluid icon='user' required iconPosition='left' type="email" placeholder='E-mail address' />
-                        <Form.Input fluid icon='user' required iconPosition='left' type="name" placeholder='name' />
+                        <Form.Input
+                            fluid icon='user'
+                            required
+                            onChange={handleChange}
+                            iconPosition='left' type="email" placeholder='E-mail address' />
+                        <Form.Input
+                            fluid icon='user'
+                            onChange={handleChange}
+                            required iconPosition='left'
+                            type="name"
+                            placeholder='name' />
                         <Form.Input
                             fluid
                             icon='lock'
                             required
+                            onChange={handleChange}
                             iconPosition='left'
                             placeholder='Password'
                             type='password'
@@ -30,6 +58,7 @@ function SignUp() {
                             fluid
                             icon='lock'
                             required
+                            onChange={handleChange}
                             iconPosition='left'
                             placeholder='Confirm Password'
                             type='password'
@@ -42,7 +71,7 @@ function SignUp() {
                 </Form>
                 <Message attached='bottom' warning>
                     <Icon name='help' />
-                    Already signed up?&nbsp;<a href='#'>Login here</a>&nbsp;instead.
+                    Already signed up<Link to='/'> Login Here</Link> instead.
                 </Message>
 
                 {condition && <Message

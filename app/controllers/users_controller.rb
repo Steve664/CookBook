@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   
     # GET /users
     def index
-      
       render json: @current_user, include: :recipes,  status: :ok
     end
   
@@ -17,7 +16,7 @@ class UsersController < ApplicationController
     def create
       @user = User.new(user_params)
       if @user.save
-        render json: @user, status: :created
+        render json:{message: "created"}, status: :created
       else
         render json: { errors: @user.errors.full_messages },
                status: :unprocessable_entity
