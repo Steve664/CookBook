@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :allergens
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
-  
+  get '/recipes/:id/review', to: "recipes#recipe_reviews"
 get '/auth/verify_token', to: 'authentication#verify_token'
   post '/auth/login', to: 'authentication#login'
   get '/*a', to: 'application#not_found'

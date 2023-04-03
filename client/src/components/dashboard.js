@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react"
 import Cookies from 'js-cookie';
 import RecipeCard from "./recipecard";
 import { Modal, Form, Button, Card } from 'semantic-ui-react';
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
     const [user, setUser] = useState({});
     const [editingRecipeId, setEditingRecipeId] = useState(null);
     const [deletingRecipeId, setDeletingRecipeId] = useState(null);
     const token = Cookies.get('token');
+    const navigate = useNavigate()
     const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
 
     useEffect(() => {
@@ -24,8 +26,14 @@ function Dashboard() {
                 .catch(error => console.log(error));
         }
         //if not valid redirect
-        // else {}
+        else { navigate('/') }
     }, []);
+
+    const handleLogout = () => {
+        // clear session cookie
+        Cookies.remove('token');
+        navigate('/')
+    }
 
     const handleEdit = (id) => {
         setEditingRecipeId(id);
@@ -91,6 +99,7 @@ function Dashboard() {
     return (
         <div >
             <h1>Hello {user.name}</h1>
+            <button onClick={handleLogout}>Log Out</button>
             {user.recipes && user.recipes.map((recipe) => {
                 return <Card.Group centered>
                     <RecipeCard

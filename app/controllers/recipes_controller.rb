@@ -4,10 +4,18 @@ class RecipesController < ApplicationController
   
     def index
       @recipes = Recipe.all
-      render json: @recipes, include: :allergens
+      render json: @recipes
     end
   
     def show
+      @recipe = Recipe.find(params[:id])
+      render json: @recipe, include: :reviews
+    end
+
+    def recipe_reviews
+      @reviews = Review.find_by(recipe_id: params[:id])
+      @author = @reviews.user.name
+      render json: {reviews: @reviews, author: @author}, status: :ok
     end
   
     def create

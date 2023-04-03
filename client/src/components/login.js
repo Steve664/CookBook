@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
@@ -6,6 +6,27 @@ import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui
 function Login() {
     const [inputs, setInputs] = useState({});
     const navigate = useNavigate()
+
+    useEffect(() => {
+        const token = Cookies.get('token');
+        if (token) {
+            // verify session token
+            fetch('/users', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+                .then(response => response.json())
+                .then(data => (data !== null ? navigate('/dashboard') : navigate('/')))
+                .catch(error => console.log(error));
+
+
+        }
+
+    }, []);
+
+
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
