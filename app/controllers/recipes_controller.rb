@@ -13,7 +13,7 @@ class RecipesController < ApplicationController
     def create
       @recipe = Recipe.new(recipe_params)
       if @recipe.save
-       render json: { message: "Recipe created successfully"}, status: :created
+       render json: @recipe, status: :created
       else
         render json: { errors: @recipe.errors.full_messages },
                status: :unprocessable_entity
@@ -22,7 +22,7 @@ class RecipesController < ApplicationController
   
     def update
       if @recipe.update(recipe_params)
-        render json: { message: "Recipe updated successfully"}, status: :created
+        render json: @recipe, status: :created
       else
         render json: { errors: @recipe.errors.full_messages },
                status: :unprocessable_entity
