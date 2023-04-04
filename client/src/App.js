@@ -8,13 +8,14 @@ import Dashboard from './components/dashboard';
 import RecipeForm from './components/recipeform'
 import RecipeView from './components/recipeview';
 import 'semantic-ui-css/semantic.min.css';
-
+import Navbar from './components/navbar';
 function App() {
 
   return (
 
 
     <Router>
+      <Navbar />
       <Routes>
         <Route exact path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />

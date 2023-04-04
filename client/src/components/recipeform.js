@@ -1,16 +1,21 @@
 
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import { Form, Button } from "semantic-ui-react";
 
-function RecipeForm({ onSubmit }) {
+function RecipeForm() {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
   const [instructions, setInstructions] = useState("");
+  const { id } = useParams();
 
+  const onSubmit = (data) => {
+
+  }
   const handleSubmit = (event) => {
     event.preventDefault();
-    const recipe = { title, image, description, instructions };
+    const recipe = { title, image, description, instructions, id };
     onSubmit(recipe);
     setTitle("");
     setImage("");

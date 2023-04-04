@@ -1,21 +1,25 @@
 class ReviewsController < ApplicationController
     before_action :authorize_request, only: [:create, :edit, :update, :destroy]
     before_action :set_review, only: [:edit, :update, :destroy]
+    before_action :set_recipe, only: [:create]
+  
     def index
-      @reviews = Reviews.all
-      render json: @reviews, include: :users
+      @reviews = Review.all
+      render json: @reviews
     end
-    def create
-      @recipe = Recipe.find(params[:recipe_id])
-      @review = @recipe.reviews.new(review_params)
-      @review.user = current_user
-      if @review.save
-        render json: { message: "Review created successfully"}, status: :created
-      else
-        render json: { errors: @recipe.errors.full_messages },
-        status: :unprocessable_entity
-      end
+
+    
+  def create
+    @review = Review.new(review_params)
+    @review.user = @current_user
+    @review.recipe = @recipe
+
+    if @review.save
+      render json: @review, status: :created
+    else
+      render json: { errors: @review.errors.full_messages }, status: :unprocessable_entity
     end
+  end
   
  
     def update
@@ -33,12 +37,15 @@ class ReviewsController < ApplicationController
     end
   
     private
+    def set_recipe
+      @recipe = Recipe.find(params[:recipe_id])
+    end
   
     def set_review
       @review = Review.find(params[:id])
     end
   
     def review_params
-      params.require(:review).permit(:rating, :comment)
+      params.require(:review).permit(:rating, :content)
     end
   end
