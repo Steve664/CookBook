@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :reviews, only: [:create]
   end
-  resources :reviews, only: [:edit, :update, :destroy]
+  resources :reviews, only: [:index, :edit, :update, :destroy]
   resources :allergens
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 

@@ -1,7 +1,10 @@
 class ReviewsController < ApplicationController
     before_action :authorize_request, only: [:create, :edit, :update, :destroy]
     before_action :set_review, only: [:edit, :update, :destroy]
-  
+    def index
+      @reviews = Reviews.all
+      render json: @reviews, include: :users
+    end
     def create
       @recipe = Recipe.find(params[:recipe_id])
       @review = @recipe.reviews.new(review_params)

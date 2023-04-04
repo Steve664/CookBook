@@ -12,11 +12,15 @@ class RecipesController < ApplicationController
       render json: @recipe, include: :reviews
     end
 
-    def recipe_reviews
-      @reviews = Review.find_by(recipe_id: params[:id])
-      @author = @reviews.user.name
-      render json: {reviews: @reviews, author: @author}, status: :ok
-    end
+   def recipe_reviews
+  @reviews = Review.where(recipe_id: params[:id])
+  @authors = []
+  @reviews.each do |review|
+    @authors << review.user.name
+  end
+  render json: {reviews: @reviews, authors: @authors}, status: :ok
+end
+
   
     def create
       @recipe = Recipe.new(recipe_params)
