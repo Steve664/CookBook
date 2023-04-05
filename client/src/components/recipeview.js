@@ -9,6 +9,7 @@ function RecipeView() {
     const [author, setAuthor] = useState([])
     const token = Cookies.get('token');
     const { id } = useParams();
+
     const [newReview, setNewReview] = useState({
         rating: null,
         content: ''
@@ -81,7 +82,7 @@ function RecipeView() {
                     {reviews && reviews.map((review, index) => {
                         return <Comment key={index}>
                             <Comment.Content>
-                                <Comment.Author as='a'>{author[index]}</Comment.Author>
+                                <Comment.Author as='a'>{author[index] || "You"}</Comment.Author>
                                 <Comment.Metadata>
                                     <div>{review.created_at}</div>
                                 </Comment.Metadata>

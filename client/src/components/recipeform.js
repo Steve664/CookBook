@@ -2,20 +2,43 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Form, Button } from "semantic-ui-react";
-
+import Cookies from "js-cookie";
 function RecipeForm() {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
+  const token = Cookies.get('token');
+
   const [description, setDescription] = useState("");
   const [instructions, setInstructions] = useState("");
-  const { id } = useParams();
 
-  const onSubmit = (data) => {
 
-  }
+  const onSubmit = (recipe) => {
+    fetch('/recipes', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(recipe)
+    })
+      .then(response => {
+        if (response.ok) {
+          // Recipe was successfully created
+          console.log('Recipe was successfully created');
+        } else {
+          // There was an error creating the recipe
+          console.error('There was an error creating the recipe');
+        }
+      })
+      .catch(error => {
+        console.error('There was a network error', error);
+      });
+  };
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const recipe = { title, image, description, instructions, id };
+    const recipe = { title, image, description, instructions };
     onSubmit(recipe);
     setTitle("");
     setImage("");

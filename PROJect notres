@@ -45,9 +45,19 @@ end
     "title": "Vegan Quinoa Salad",
     "description": "A delicious and healthy vegan quinoa salad",
     "instructions": "1. Cook quinoa according to package instructions. 2. Chop vegetables and mix with cooked quinoa. 3. Mix together dressing ingredients and pour over salad. 4. Serve chilled.",
-    "allergen_ids": [
-        1,
-        2,
-        4
-    ]
+    
 }
+
+ {user.recipes && user.recipes.map((recipe) => {
+                return <Card.Group centered>
+                    <RecipeCard
+                        key={recipe.id}
+                        id={recipe.id}
+                        title={recipe.title}
+                        image={recipe.image}
+                        description={recipe.description}
+                        onEdit={() => handleEdit(recipe.id)}
+                        onDelete={() => handleDelete(recipe.id)}
+                    />
+                </Card.Group>
+            })}

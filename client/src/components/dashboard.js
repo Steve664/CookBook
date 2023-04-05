@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react"
 import Cookies from 'js-cookie';
 import RecipeCard from "./recipecard";
-import { Modal, Form, Button, Card } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { Modal, Form, Button, Divider, Card, Item } from 'semantic-ui-react';
 import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
@@ -100,19 +101,29 @@ function Dashboard() {
         <div >
             <h1>Hello {user.name}</h1>
             <button onClick={handleLogout}>Log Out</button>
+
+
             {user.recipes && user.recipes.map((recipe) => {
-                return <Card.Group centered>
-                    <RecipeCard
-                        key={recipe.id}
-                        id={recipe.id}
-                        title={recipe.title}
-                        image={recipe.image}
-                        description={recipe.description}
-                        onEdit={() => handleEdit(recipe.id)}
-                        onDelete={() => handleDelete(recipe.id)}
-                    />
-                </Card.Group>
+                return (<Item.Group divided>
+                    <Item key={recipe.id}>
+                        <Item.Image src={recipe.image} size="medium" />
+
+                        <Item.Content>
+                            <Item.Header>{recipe.title}</Item.Header>
+                            <Item.Description>{recipe.description}</Item.Description>
+                            <Item.Extra>
+
+                                <Link to={`/recipeview/${recipe.id}`}><Button >View</Button></Link>
+                                <Button primary onClick={() => handleEdit(recipe.id)}>Edit</Button>
+                                <Button negative onClick={() => handleDelete(recipe.id)}>Delete</Button>
+                            </Item.Extra>
+                        </Item.Content>
+                    </Item>
+                    <Divider />
+                </Item.Group>
+                );
             })}
+
             <Modal open={editingRecipeId !== null}>
                 <Modal.Header>Edit Recipe</Modal.Header>
                 <Modal.Content>
