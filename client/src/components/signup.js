@@ -24,7 +24,7 @@ function SignUp() {
         navigate('/');
     }
 
-    let condition = true
+
     return (
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>
@@ -36,18 +36,21 @@ function SignUp() {
                         <Form.Input
                             fluid icon='user'
                             required
+                            name="email"
                             onChange={handleChange}
                             iconPosition='left' type="email" placeholder='E-mail address' />
                         <Form.Input
                             fluid icon='user'
+                            name="name"
                             onChange={handleChange}
                             required iconPosition='left'
-                            type="name"
+                            type="text"
                             placeholder='name' />
                         <Form.Input
                             fluid
                             icon='lock'
                             required
+                            name="password"
                             onChange={handleChange}
                             iconPosition='left'
                             placeholder='Password'
@@ -58,6 +61,7 @@ function SignUp() {
                             fluid
                             icon='lock'
                             required
+                            name="password_confirmation"
                             onChange={handleChange}
                             iconPosition='left'
                             placeholder='Confirm Password'
@@ -74,11 +78,7 @@ function SignUp() {
                     Already signed up<Link to='/'> Login Here</Link> instead.
                 </Message>
 
-                {condition && <Message
-                    success
-                    header='Form Completed'
-                    content="You're all signed up for the newsletter"
-                />}
+
 
             </Grid.Column>
         </Grid>
