@@ -27,14 +27,10 @@ function Dashboard() {
                 .catch(error => console.log(error));
         }
         //if not valid redirect
-        else { navigate('/') }
+        else { navigate('/login') }
     }, []);
 
-    const handleLogout = () => {
-        // clear session cookie
-        Cookies.remove('token');
-        navigate('/')
-    }
+
 
     const handleEdit = (id) => {
         setEditingRecipeId(id);
@@ -98,8 +94,8 @@ function Dashboard() {
     }
 
     return (
-        <div >
-            <h1>Hello {user.name}</h1>
+        <div style={{ padding: "50px" }}>
+            <h2>Hello {user.name}</h2>
 
 
             {user.recipes && user.recipes.map((recipe) => {

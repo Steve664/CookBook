@@ -1,6 +1,7 @@
 import AllRecipeCard from "./allRecipeCards";
 import React, { useState, useEffect } from "react"
-import { Card } from 'semantic-ui-react';
+import { Modal, Form, Button, Divider, Card, Item } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 
 function RecipePage() {
@@ -20,20 +21,27 @@ function RecipePage() {
 
 
     return (
-        <div>
+        <div style={{ padding: "50px" }}>
             <h1>Recipes</h1>
             {recipes && recipes.map((recipe) => {
-                return <Card.Group centered>
-                    <AllRecipeCard
-                        key={recipe.id}
-                        id={recipe.id}
-                        title={recipe.title}
-                        image={recipe.image}
-                        description={recipe.description}
-                    />
-                </Card.Group>
-            })
-            }
+                return (<Item.Group divided>
+                    <Item key={recipe.id}>
+                        <Item.Image src={recipe.image} size="medium" />
+
+                        <Item.Content>
+                            <Item.Header>{recipe.title}</Item.Header>
+                            <Item.Description>{recipe.description}</Item.Description>
+                            <Item.Extra>
+
+                                <Link to={`/recipeview/${recipe.id}`}><Button >View</Button></Link>
+
+                            </Item.Extra>
+                        </Item.Content>
+                    </Item>
+                    <Divider />
+                </Item.Group>
+                );
+            })}
         </div>
     );
 
