@@ -91,6 +91,17 @@ backend together.
 }
 ```
 
+- POST `/users`
+
+```JSON
+{
+    "name":"jane",
+    "email": "jane@example.com",
+    "password": "password123"
+
+}
+```
+
 ## Author Info
 
 <ul>

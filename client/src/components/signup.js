@@ -29,7 +29,7 @@ function SignUp() {
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>
                 <Header as='h2' color='teal' textAlign='center'>
-                    <Image src='../logo.svg' /> Sign up for an account
+                    <Image src='https://cdn.dribbble.com/users/2425253/screenshots/15276005/media/96f7e2bd3cc1089bcbf0eb26d74b4a08.jpg?compress=1&resize=1000x750&vertical=top' /> Sign up for an account
                 </Header>
                 <Form size='large' onSubmit={handleSubmit}>
                     <Segment stacked>
@@ -64,7 +64,7 @@ function SignUp() {
                             type='password'
                         />
 
-                        <Button color='teal' fluid size='large'>
+                        <Button color='yellow' fluid size='large'>
                             Sign Up
                         </Button>
                     </Segment>
