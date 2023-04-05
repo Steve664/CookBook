@@ -79,8 +79,8 @@ function Dashboard() {
             .then(response => {
                 if (response.ok) {
                     // remove recipe from user's recipes list
-                    const newRecipes = user.recipes.filter(recipe => recipe.id !== editingRecipeId);
-                    setUser(prevState => ({ ...prevState, recipes: newRecipes }));
+                    const newRecipes = user.recipes.filter(recipe => recipe.id !== deletingRecipeId);
+                    setUser({ ...user, recipes: newRecipes });
                 }
                 setDeleteConfirmationOpen(false);
                 setDeletingRecipeId(null);
