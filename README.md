@@ -7,7 +7,7 @@ backend together.
 
 ## ERD
 
-![Alt Text]("ERD.png")
+![Alt Text](ERD.png)
 
 ## Requirements
 
