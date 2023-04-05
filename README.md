@@ -57,7 +57,7 @@ backend together.
 
 ```json
 {
-  "title": "Shrimp update",
+  "title": "Shrimp Post",
   "image": "https://a.cdn-hotels.com/gdcs/production0/d1513/35c1c89e-408c-4449-9abe-f109068f40c0.jpg?impolicy=fcrop&w=800&h=533&q=medium",
   "description": "A delicious pasta dish with shrimp and garlic",
   "instructions": "Cook pasta according to package directions. Saute garlic and shrimp in olive oil. Add to pasta and enjoy!"
