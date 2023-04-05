@@ -7,7 +7,7 @@ backend together.
 
 ## ERD
 
-![Alt Text]("https://github.com/Steve664/CookBook/blob/main/ERD.png")
+![Alt Text]("ERD.png")
 
 ## Requirements
 
