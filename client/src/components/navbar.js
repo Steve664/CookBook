@@ -7,17 +7,20 @@ function Navbar() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [activeItem, setActiveItem] = useState('');
   const navigate = useNavigate()
-
+  const token = Cookies.get('token');
   useEffect(() => {
-    const token = Cookies.get('token');
+
     if (token) {
       setLoggedIn(true);
     }
-  }, []);
+  }, [token]);
+
 
   const handleLogout = () => {
     // clear session cookie
+
     Cookies.remove('token');
+    setLoggedIn(false);
     navigate('/')
   }
 
