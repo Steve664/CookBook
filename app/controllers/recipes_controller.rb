@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
   
     def show
       @recipe = Recipe.find(params[:id])
-      render json: @recipe, include: :reviews
+      render json: @recipe, include: :reviews, status: :ok
     end
 
    def recipe_reviews

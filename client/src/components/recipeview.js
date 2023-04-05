@@ -93,6 +93,7 @@ function RecipeView() {
                                 </Comment.Metadata>
                                 <Comment.Text>{review.content}</Comment.Text>
                                 <Comment.Metadata>
+                                    <span>Rating:</span>
                                     <Rating defaultRating={review.rating} maxRating={5} disabled />
                                 </Comment.Metadata>
                             </Comment.Content>
@@ -101,6 +102,7 @@ function RecipeView() {
                     )}
                     <Divider />
                     <Form onSubmit={handleReviewSubmit}>
+                        <span>Rating:</span>
                         <Rating maxRating={5} onRate={handleRate} />
                         <Form.TextArea name='content' placeholder='Write a review...' onChange={handleReviewChange} value={newReview.content || ''} />
                         <Button content='Add Review' labelPosition='left' icon='edit' primary />

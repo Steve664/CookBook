@@ -5,6 +5,14 @@
 This project is a recipe management app so that uses a React frontend and Rails
 backend together.
 
+## User Stories
+
+- As a user, I want to be able to create a profile.
+- As a user, I want to be able to create my own recipes and share them with the communit
+- As a user, I want to be able to view,edit,delete my created recipes.
+- As a user, I want to be able to rate and review recipes, so that I can provide feedback to other users and improve the overall quality of the app.
+  y.
+
 ## ERD
 
 ![Alt Text](ERD.png)
