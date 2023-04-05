@@ -100,7 +100,6 @@ function Dashboard() {
     return (
         <div >
             <h1>Hello {user.name}</h1>
-            <button onClick={handleLogout}>Log Out</button>
 
 
             {user.recipes && user.recipes.map((recipe) => {

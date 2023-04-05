@@ -9,6 +9,7 @@ import RecipeForm from './components/recipeform'
 import RecipeView from './components/recipeview';
 import 'semantic-ui-css/semantic.min.css';
 import Navbar from './components/navbar';
+import LandingPage from './components/landingpage'
 function App() {
 
   return (
@@ -17,7 +18,8 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route exact path="/" element={<Login />} />
+        <Route exact path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/recipeform" element={<RecipeForm />} />
