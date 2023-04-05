@@ -29,12 +29,13 @@ backend together.
 
 - Open your terminal
 - To use the application, start the Rails server by running `rails server`.
-- Then navigate to the client folder and run `npm start` this will lauch the react front-end
+- Then navigate to the client folder and run `npm install` and `npm start` this will lauch the react front-end
 
 ## Routes
 
 <p>The following routes are available:</p>
 
+- GET `/users`: retrieves the logged in users details
 - GET `/users/:name`: retrieves a user by their name parameter
 - POST `/users`: creates a new user
 - PATCH `/users/:name`: updates an existing user by their name parameter
