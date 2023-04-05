@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 
 function Navbar() {
   const [loggedIn, setLoggedIn] = useState(false)
-  const [activeItem, setActiveItem] = useState('home');
+  const [activeItem, setActiveItem] = useState('');
   const navigate = useNavigate()
 
   useEffect(() => {

@@ -26,22 +26,27 @@ function RecipeView() {
 
     const handleReviewSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch(`/recipes/${id}/reviews`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(newReview),
-        });
-        if (response.ok) {
-            // Update the reviews state with the new review
-            const review = await response.json();
-            setReviews([...reviews, review]);
-            // Clear the form
-            setNewReview({ content: '', rating: 0 });
-        } else {
-            console.error('Failed to create review:', response.statusText);
+        if (token) {
+            const response = await fetch(`/recipes/${id}/reviews`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(newReview),
+            });
+            if (response.ok) {
+                // Update the reviews state with the new review
+                const review = await response.json();
+                setReviews([...reviews, review]);
+                // Clear the form
+                setNewReview({ content: '', rating: 0 });
+            } else {
+                console.error('Failed to create review:', response.statusText);
+            }
+        }
+        else {
+            alert("log in to comment")
         }
     };
 
