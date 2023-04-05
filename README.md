@@ -5,6 +5,10 @@
 This project is a recipe management app so that uses a React frontend and Rails
 backend together.
 
+## ERD
+
+![Alt Text]("./ERD.png")
+
 ## Requirements
 
 - Ruby 2.7.4
