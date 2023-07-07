@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/recipes/:id/review', to: "recipes#recipe_reviews"
 get '/auth/verify_token', to: 'authentication#verify_token'
   post '/auth/login', to: 'authentication#login'
-  get '/*a', to: 'application#not_found'
+ 
+  get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
 end
