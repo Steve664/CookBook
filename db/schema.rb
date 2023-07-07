@@ -12,27 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2023_03_29_001648) do
 
-  create_table "allergens", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "recipe_allergens", force: :cascade do |t|
-    t.integer "recipe_id", null: false
-    t.integer "allergen_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["allergen_id"], name: "index_recipe_allergens_on_allergen_id"
-    t.index ["recipe_id"], name: "index_recipe_allergens_on_recipe_id"
-  end
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "recipes", force: :cascade do |t|
     t.string "title"
     t.string "image"
     t.text "description"
     t.text "instructions"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_recipes_on_user_id"
@@ -41,8 +29,8 @@ ActiveRecord::Schema.define(version: 2023_03_29_001648) do
   create_table "reviews", force: :cascade do |t|
     t.text "content"
     t.integer "rating"
-    t.integer "user_id", null: false
-    t.integer "recipe_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "recipe_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["recipe_id"], name: "index_reviews_on_recipe_id"
@@ -57,8 +45,6 @@ ActiveRecord::Schema.define(version: 2023_03_29_001648) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "recipe_allergens", "allergens"
-  add_foreign_key "recipe_allergens", "recipes"
   add_foreign_key "recipes", "users"
   add_foreign_key "reviews", "recipes"
   add_foreign_key "reviews", "users"
