@@ -35,7 +35,7 @@ function Login() {
 
     const handleLogin = async () => {
 
-        const response = await fetch('http://localhost:3000/auth/login', {
+        const response = await fetch('/auth/login', {
             method: 'POST',
             body: JSON.stringify(inputs),
             headers: {
