@@ -13,8 +13,4 @@ test:
 
 production:
   <<: *default
-  database: cookbook_dj5m
-  username: cookbook_dj5m_user
-  password: <%= ENV["DATABASE_PASSWORD"] %>
-  host: <%= ENV['DATABASE_HOST'] %>
-  port: <%= ENV.fetch('DATABASE_PORT') { 5432 } %>
+  url: <%= ENV['DATABASE_URL'] %>
