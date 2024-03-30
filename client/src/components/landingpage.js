@@ -4,6 +4,7 @@ import { Container, Header, Button } from "semantic-ui-react";
 
 function LandingPage() {
     return (
+        <div style={{marginTop : "180px"}}>
         <Container>
             <Header as="h1" textAlign="center">
                 Welcome to the Recipe App!
@@ -17,6 +18,7 @@ function LandingPage() {
                 Get started
             </Button>
         </Container>
+    </div>
     );
 }
 
