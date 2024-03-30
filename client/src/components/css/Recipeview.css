@@ -5,7 +5,9 @@
   margin: 0 auto;
   max-width: 1000px;
   padding: 20px;
-  background-color: #fff;
+  background-color: #fefefe;
+  border: black;
+  border-radius: 25px;
 }
 
 #Recipeimg {
