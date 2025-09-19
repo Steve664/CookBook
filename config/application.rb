@@ -1,6 +1,7 @@
+require "logger"   
 require_relative "boot"
-
 require "rails"
+
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
@@ -26,7 +27,6 @@ module ReactRailsApiProjectTemplate
     config.middleware.use ActionDispatch::Session::CookieStore
 
     # Use SameSite=Strict for all cookies to help protect against CSRF
-    # https://owasp.org/www-community/SameSite
     config.action_dispatch.cookies_same_site_protection = :strict
 
     # Initialize configuration defaults for originally generated Rails version.
